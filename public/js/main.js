@@ -20489,25 +20489,58 @@ module.exports = require('./lib/React');
 },{"./lib/React":155}],178:[function(require,module,exports){
 var React = require('react');
 
-var ListManager = React.createClass({
-    displayName: 'ListManager',
+var Component1 = React.createClass({
+    displayName: "Component1",
 
     render: function () {
+        var divStyle = {
+            marginTop: 10,
+            backgroundColor: "pink"
+        };
+        var headingStyle = {
+            backgroundColor: "blue"
+        };
+        var textStyle = {
+            color: 'black',
+            fontSize: 36
+        };
         return React.createElement(
-            'div',
-            null,
-            this.props.title
+            "div",
+            { style: divStyle },
+            React.createElement(
+                "div",
+                { className: "panel panel-primary" },
+                React.createElement(
+                    "div",
+                    { style: headingStyle, className: "panel panel-heading" },
+                    React.createElement(
+                        "h1",
+                        null,
+                        this.props.title
+                    )
+                ),
+                React.createElement(
+                    "div",
+                    { style: textStyle, className: "panel panel-body" },
+                    this.props.text
+                ),
+                React.createElement("div", { className: "panel panel-body" })
+            )
         );
     }
 });
 
-module.exports = ListManager;
+module.exports = Component1;
 
 },{"react":177}],179:[function(require,module,exports){
 var React = require('react');
 var ReactDOM = require('react-dom');
-var ListManager = require('./components/ListManager.jsx');
+var Component1 = require('./components/Component1.jsx');
 
-ReactDOM.render(React.createElement(ListManager, { title: 'Cool Beans' }), document.getElementById('container'));
+ReactDOM.render(React.createElement(Component1, { title: '20', text: 'New followeers added this month' }), document.getElementById('container1'));
 
-},{"./components/ListManager.jsx":178,"react":177,"react-dom":26}]},{},[179]);
+ReactDOM.render(React.createElement(Component1, { title: '$ 1250', text: 'Average Monthly Income' }), document.getElementById('container2'));
+
+ReactDOM.render(React.createElement(Component1, { title: '$ 13865', text: 'Yearly Income Goal' }), document.getElementById('container3'));
+
+},{"./components/Component1.jsx":178,"react":177,"react-dom":26}]},{},[179]);
